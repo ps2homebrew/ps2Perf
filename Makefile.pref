@@ -1,0 +1,43 @@
+####################################################
+# Change the settings, so they match yours         #
+####################################################
+
+#
+# Location of PS2LIB. Requires 1.9 or later. 
+# 
+
+PS2DEV=/usr/ps2dev
+PS2LIB =/usr/ps2dev/ps2lib
+NEWLIB=/usr/ps2dev/newlib
+PS2PERF=/home/aramos/ps2Perf
+#
+# Root directory of the PS2IP source tree
+#
+
+#PS2IP = /home/aramos/ps2ip
+
+#
+# Location of LWIP source package.
+#
+
+#LWIP = /usr/ps2dev/lwip
+
+#
+# Compilers and tools
+#
+
+EE_PREFIX = ee-
+EE_CC = $(PS2DEV)/bin/$(EE_PREFIX)gcc
+EE_AS = $(PS2DEV)/bin/$(EE_PREFIX)as
+EE_LD = $(PS2DEV)/bin/$(EE_PREFIX)ld
+EE_AR = $(PS2DEV)/bin/$(EE_PREFIX)ar
+EE_OBJCOPY = $(PS2DEV)/bin/$(EE_PREFIX)objcopy
+EE_STRIP = $(PS2DEV)/bin/$(EE_PREFIX)strip
+
+IOP_PREFIX = iop-
+IOP_CC = $(PS2DEV)/bin/$(IOP_PREFIX)gcc
+IOP_AS = $(PS2DEV)/bin/$(IOP_PREFIX)as
+IOP_LD = $(PS2DEV)/bin/$(IOP_PREFIX)ld
+IOP_AR = $(PS2DEV)/bin/$(IOP_PREFIX)ar
+IOP_OBJCOPY = $(PS2DEV)/bin/$(IOP_PREFIX)objcopy
+IOP_STRIP = $(PS2DEV)/bin/$(IOP_PREFIX)strip
