@@ -6,8 +6,6 @@
  
  Mavy & Bigboss (PS2Reality.net)
  
- 
- Note : We are using Sjeep sjpcm just to output text (it works fine with naplink :D)
 
 */
 
@@ -23,7 +21,6 @@
 #include <math.h>
 #include <stdarg.h>
 #include <ps2Perf.h>
-#include <sjpcm.h>
 
 Counters0 myCounter0;
 Counters1 myCounter1;
@@ -32,12 +29,7 @@ void loadModules(void)
 {
     int ret;
 
-    ret = sif_load_module("rom0:LIBSD",0,NULL);
-    if ( ret< 0 ) {
-       return;
-    }
-
-    ret = sif_load_module("host:sjpcm.irx",0,NULL);
+    ret = SifLoadModule("rom0:LIBSD",0,NULL);
     if ( ret< 0 ) {
        return;
     }
@@ -115,10 +107,10 @@ int main()
 {
   	long output = 0;
   	
-  	sif_rpc_init(0);
+  	SifInitRpc(0);
 	loadModules();
-	SjPCM_Init(0);
-	SjPCM_Puts ("Yeah... I'm Here\n");
+//	SjPCM_Init(0);
+	printf ("Yeah... I'm Here\n");
 	
 		initPs2Perf 	();   		// Init The Machine :D
 		mode0Select 	(1,1,1,1);  // We Count on any mode (kernel, user...)
@@ -130,14 +122,14 @@ int main()
 		startPs2Perf 	();   	// Start counters!!! 
 		output = VeryVeryHardFunction (10000);
 		stopPs2Perf 	();		// Stop counters!!!
-		SjPCM_Puts ("Output Equals %d\n",output);
+		printf ("Output Equals %d\n",output);
 		
 		// Here counters aren't counting 
 		
 		flushCounter 	(&myCounter0,PC0,0);  // += counter, and counter = 0
 		flushCounter 	(&myCounter1,PC1,0);  // ...
-		SjPCM_Puts ("Very Very Hard Test 1\n");
-		SjPCM_Puts (DumpInfo (&myCounter0,&myCounter1)); // A simple dumping function...
+		printf ("Very Very Hard Test 1\n");
+		printf (DumpInfo (&myCounter0,&myCounter1)); // A simple dumping function...
 /* ===========================================================================================================*/
 		/* Test Another VeryVeryHard Function now using scratchpad */
 
@@ -145,18 +137,18 @@ int main()
 		initCounter		(&myCounter1,PC1);
 		event0Select 	(EV0_ProcessorCycle);		
 		event1Select    (EV1_DataCacheMiss);	
-		SjPCM_Puts ("Second Test\n");
+		printf ("Second Test\n");
 		startPs2Perf 	();   	
 		output = VeryVeryHardFunctionScratch (10000);
 		stopPs2Perf 	();		
-		SjPCM_Puts ("Output Equals %d\n",output);
+		printf ("Output Equals %d\n",output);
 		
 		// Here counters aren't counting 
 		
 		flushCounter 	(&myCounter0,PC0,0);  
 		flushCounter 	(&myCounter1,PC1,0);  
-		SjPCM_Puts ("Very Very Hard Test 2\n");
-		SjPCM_Puts (DumpInfo (&myCounter0,&myCounter1)); 
+		printf ("Very Very Hard Test 2\n");
+		printf (DumpInfo (&myCounter0,&myCounter1)); 
  
  /* ===========================================================================================================*/ 
   /* Test Another VeryVeryHard Function now using no cached memory */
@@ -165,18 +157,18 @@ int main()
 		initCounter		(&myCounter1,PC1);
 		event0Select 	(EV0_ProcessorCycle);		
 		event1Select    (EV1_DataCacheMiss);	
-		SjPCM_Puts ("Third Test\n");
+		printf ("Third Test\n");
 		startPs2Perf 	();   	
 		output = VeryVeryHardFunctionNoCached (10000);
 		stopPs2Perf 	();		
-		SjPCM_Puts ("Output Equals %d\n",output);
+		printf ("Output Equals %d\n",output);
 		
 		// Here counters aren't counting 
 		
 		flushCounter 	(&myCounter0,PC0,0);  
 		flushCounter 	(&myCounter1,PC1,0);  
-		SjPCM_Puts ("Very Very Hard Test 3\n");
-		SjPCM_Puts (DumpInfo (&myCounter0,&myCounter1)); 
+		printf ("Very Very Hard Test 3\n");
+		printf (DumpInfo (&myCounter0,&myCounter1)); 
   
   /* ===========================================================================================================*/ 
   /* Test Another VeryVeryHard Function now using uncached accelerated memory */
@@ -185,19 +177,19 @@ int main()
 		initCounter		(&myCounter1,PC1);
 		event0Select 	(EV0_ProcessorCycle);		
 		event1Select    (EV1_DataCacheMiss);	
-		SjPCM_Puts ("Fourth Test\n");
+		printf ("Fourth Test\n");
 		startPs2Perf 	();   	
 		output = VeryVeryHardFunctionUnCachedAccelerated (10000);
 		stopPs2Perf 	();		
-		SjPCM_Puts ("Output Equals %d\n",output);
+		printf ("Output Equals %d\n",output);
 		
 		// Here counters aren't counting 
 		
 		flushCounter 	(&myCounter0,PC0,0);  
 		flushCounter 	(&myCounter1,PC1,0);  
-		SjPCM_Puts ("Very Very Hard Test 4\n");
-		SjPCM_Puts (DumpInfo (&myCounter0,&myCounter1)); 
+		printf ("Very Very Hard Test 4\n");
+		printf (DumpInfo (&myCounter0,&myCounter1)); 
 
   	// Zzzzzz...
-  	k_SleepThread(); 
+  	SleepThread(); 
 }

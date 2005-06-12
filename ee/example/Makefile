@@ -6,7 +6,9 @@
 
 
 EE_BIN = ps2PerfExample.elf
-EE_OBJS = main.o sjpcm_rpc.o
+EE_OBJS = main.o 
+EE_LIBS = -lps2Perf
+EE_LDFLAGS = -L../lib
 
 all: $(EE_BIN)
 	cp -f ps2PerfExample.elf ../../bin/
