@@ -10,6 +10,12 @@ EE_OBJS = ps2Perf.o
 
 all: $(EE_LIB)
 
+install: $(EE_LIB)
+	mkdir -p $(PS2DEV)/ps2Perf/lib
+	cp $(EE_LIB) $(PS2DEV)/ps2Perf/lib
+	mkdir -p $(PS2DEV)/ps2Perf/include
+	cp ../../include/ps2Perf.h $(PS2DEV)/ps2Perf/include
+
 clean:
 	rm -f *.elf *.o *.a
 
