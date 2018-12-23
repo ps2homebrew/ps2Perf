@@ -111,14 +111,14 @@ int main()
 	//	SjPCM_Init(0);
 	printf("Yeah... I'm Here\n");
 
-	initPs2Perf();			  // Init The Machine :D
+	initPs2Perf();            // Init The Machine :D
 	mode0Select(1, 1, 1, 1);  // We Count on any mode (kernel, user...)
 	mode1Select(1, 1, 1, 1);
 	initCounter(&myCounter0, PC0);  // Well... just a shortcut
 	initCounter(&myCounter1, PC1);
 	event0Select(EV0_ProcessorCycle);  // PC0 Event Counter
 	event1Select(EV1_DataCacheMiss);   // PC1 Event Counter
-	startPs2Perf();					   // Start counters!!!
+	startPs2Perf();                    // Start counters!!!
 	output = VeryVeryHardFunction(10000);
 	stopPs2Perf();  // Stop counters!!!
 	printf("Output Equals %ld\n", output);
@@ -129,7 +129,7 @@ int main()
 	flushCounter(&myCounter1, PC1, 0);  // ...
 	printf("Very Very Hard Test 1\n");
 	printf(DumpInfo(&myCounter0, &myCounter1));  // A simple dumping function...
-												 /* ===========================================================================================================*/
+	                                             /* ===========================================================================================================*/
 	/* Test Another VeryVeryHard Function now using scratchpad */
 
 	initCounter(&myCounter0, PC0);

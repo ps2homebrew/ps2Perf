@@ -78,59 +78,59 @@ typedef struct
 {
 	unsigned long dummy1 : 1;  // Always 0
 	// PCR0
-	unsigned long EXL0 : 1;	// PCR0 operation in Level 1 (0 Not Counted/1 Counted)
-	unsigned long K0 : 1;	  // PCR0 in Kernel Mode (0 Not Counted/1 Counted)
-	unsigned long S0 : 1;	  // PCR0 in Supervisor Mode
-	unsigned long U0 : 1;	  // PCR0 in User Mode
+	unsigned long EXL0 : 1;    // PCR0 operation in Level 1 (0 Not Counted/1 Counted)
+	unsigned long K0 : 1;      // PCR0 in Kernel Mode (0 Not Counted/1 Counted)
+	unsigned long S0 : 1;      // PCR0 in Supervisor Mode
+	unsigned long U0 : 1;      // PCR0 in User Mode
 	unsigned long EVENT0 : 5;  // Event to Count by PCR0
 	// PCR1
 	unsigned long dummy2 : 1;   // Always 0
-	unsigned long EXL1 : 1;		// PCR1 operation in Level 1 (0 Not Counted/1 Counted)
-	unsigned long K1 : 1;		// PCR1 in Kernel Mode (0 Not Counted/1 Counted)
-	unsigned long S1 : 1;		// PCR1 in Supervisor Mode
-	unsigned long U1 : 1;		// PCR1 in User Mode
+	unsigned long EXL1 : 1;     // PCR1 operation in Level 1 (0 Not Counted/1 Counted)
+	unsigned long K1 : 1;       // PCR1 in Kernel Mode (0 Not Counted/1 Counted)
+	unsigned long S1 : 1;       // PCR1 in Supervisor Mode
+	unsigned long U1 : 1;       // PCR1 in User Mode
 	unsigned long EVENT1 : 5;   // Event to Count by PCR1
 	unsigned long dummy3 : 11;  // Always 0
-	unsigned long CTE : 1;		// Counter Enable (1 Enabled)
+	unsigned long CTE : 1;      // Counter Enable (1 Enabled)
 } PCCR_Register;
 
 typedef struct
-{									 // <0 => Overflow
-	long ProcessorCycle;			 //	1
-	long SingleInstructionIssue;	 //	2
-	long BranchIssued;				 //	3
-	long BTACmiss;					 //	4
-	long ITLBmiss;					 //	5
-	long InstructionCacheMiss;		 //	6
-	long AccessToDTLB;				 //	7
-	long nonBlockingLoad;			 //	8
-	long WBBSingleRequest;			 //	9
-	long WBBBurstRequest;			 //	10
-	long CPUAdressBusBusy;			 //	11
-	long InstructionCompleted;		 //	12
+{                                    // <0 => Overflow
+	long ProcessorCycle;             //	1
+	long SingleInstructionIssue;     //	2
+	long BranchIssued;               //	3
+	long BTACmiss;                   //	4
+	long ITLBmiss;                   //	5
+	long InstructionCacheMiss;       //	6
+	long AccessToDTLB;               //	7
+	long nonBlockingLoad;            //	8
+	long WBBSingleRequest;           //	9
+	long WBBBurstRequest;            //	10
+	long CPUAdressBusBusy;           //	11
+	long InstructionCompleted;       //	12
 	long NonBDSInstrucionCompleted;  //	13
 	long COP2InstructionCompleted;   //	14
-	long LoadCompleted;				 //	15
+	long LoadCompleted;              //	15
 } Counters0;
 
 typedef struct
-{									   // <0 => Overflow
-	long LowOrderBranchIssued;		   //	0
-	long ProcessorCycle;			   //	1
-	long DualInstructionIssue;		   //	2
-	long BranchMispredicted;		   //	3
-	long TLBmiss;					   //	4
-	long DTLBmiss;					   //	5
-	long DataCacheMiss;				   //	6
+{                                      // <0 => Overflow
+	long LowOrderBranchIssued;         //	0
+	long ProcessorCycle;               //	1
+	long DualInstructionIssue;         //	2
+	long BranchMispredicted;           //	3
+	long TLBmiss;                      //	4
+	long DTLBmiss;                     //	5
+	long DataCacheMiss;                //	6
 	long WBBSingleRequestUnavailable;  //	7
 	long WBBBurstRequestUnavailable;   //	8
-	long WBBBurstRequestAlmostFull;	//	9
-	long WBBBurstRequestFull;		   //	10
-	long CPUDataBusBusy;			   //	11
-	long InstructionCompleted;		   //	12
-	long NonBDSInstrucionCompleted;	//	13
-	long COP1InstructionCompleted;	 //	14
-	long StoreCompleted;			   //	15
+	long WBBBurstRequestAlmostFull;    //	9
+	long WBBBurstRequestFull;          //	10
+	long CPUDataBusBusy;               //	11
+	long InstructionCompleted;         //	12
+	long NonBDSInstrucionCompleted;    //	13
+	long COP1InstructionCompleted;     //	14
+	long StoreCompleted;               //	15
 } Counters1;
 
 
