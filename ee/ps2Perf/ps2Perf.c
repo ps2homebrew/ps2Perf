@@ -35,6 +35,7 @@
 
 #include <ps2Perf.h>
 #include <stdio.h>
+#include <string.h>
 #include <malloc.h>
 #include <fileio.h>
 #define SENDTOPCCR(x)	__asm __volatile (" mtps %0,0 \n\t SYNC.P" : : "r"(x) : "memory");
@@ -91,7 +92,7 @@ void flushCounter (void * counters,char type,char reStart)
 {
 	Counters0 *c0;
 	Counters1 *c1;
-	long value;
+	long value = 0;
 	PCCR_Register reg_temp;
 	GETFROMPCCR (reg_temp);
 	reg_temp.CTE = 0;  		// Stop Counters
@@ -217,7 +218,7 @@ char * DumpInfo (Counters0 *c0,Counters1 *c1)
 {
 	char * output;
 	output = (char *) malloc (sizeof(char)*1024);
-	sprintf (output,"\n[PC0] C1: %d C2: %d C3: %d C4: %d C5: %d C6: %d C7: %d\nC8: %d C9: %d C10: %d C11: %d C12: %d C13: %d C14: %d C15: %d \n[PC1] C0: %d C1: %d C2: %d C3: %d C4: %d C5: %d C6: %d C7: %d \nC8: %d C9: %d C10: %d C11: %d C12: %d C13: %d C14: %d C15: %d\n",
+	sprintf (output,"\n[PC0] C1: %ld C2: %ld C3: %ld C4: %ld C5: %ld C6: %ld C7: %ld\nC8: %ld C9: %ld C10: %ld C11: %ld C12: %ld C13: %ld C14: %ld C15: %ld \n[PC1] C0: %ld C1: %ld C2: %ld C3: %ld C4: %ld C5: %ld C6: %ld C7: %ld \nC8: %ld C9: %ld C10: %ld C11: %ld C12: %ld C13: %ld C14: %ld C15: %ld\n",
 	c0->ProcessorCycle,   				
 	c0->SingleInstructionIssue,		
 	c0->BranchIssued,					

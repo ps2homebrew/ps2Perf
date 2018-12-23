@@ -4,17 +4,26 @@
 #						      bigboss@ps2reality.net )
 #  ---------------------------------------------------------------------------
 
+EE_BIN_DIR = ../../bin/
+EE_INCS += -I../../include/
 
-EE_BIN = ps2PerfExample.elf
+EE_BIN = $(EE_BIN_DIR)ps2PerfExample.elf
 EE_OBJS = main.o 
-EE_LIBS = -lps2Perf
-EE_LDFLAGS = -L../lib
+EE_LIBS += -lps2Perf
+EE_LDFLAGS += -L../lib
 
-all: $(EE_BIN)
-	cp -f ps2PerfExample.elf ../../bin/
+all: $(EE_BIN_DIR) $(EE_OBJS_DIR) $(EE_BIN)
+	mkdir -p $(EE_BIN_DIR)
+
+$(EE_BIN_DIR):
+	mkdir -p $(EE_BIN_DIR)
+
+$(EE_OBJS_DIR):
+	mkdir -p $(EE_OBJS_DIR)
 
 clean:
-	rm -f *.elf *.o *.a
+	rm -f -r $(EE_OBJS) $(EE_BIN_DIR)
 
-include ../../Makefile.pref
-include ../../Makefile.eeglobal
+include $(PS2SDK)/Defs.make
+include $(PS2SDK)/samples/Makefile.eeglobal
+#include ../../Makefile.eeglobal

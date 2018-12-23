@@ -8,9 +8,11 @@
 all: 
 	$(MAKE) -C ee
 
-install: 
+install: all
 	$(MAKE) -C ee/ps2Perf/ install
 
 clean:
 	$(MAKE) -C ee clean
-	
+
+sample:
+	$(MAKE) -C ee sample

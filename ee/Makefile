@@ -5,18 +5,14 @@
 #  ---------------------------------------------------------------------------
 
 
-all: build-ps2Perf build-example
-
+all: build-ps2Perf sample
 
 clean:
 	$(MAKE) -C ps2Perf clean
 	$(MAKE) -C example clean
-	$(MAKE) -C lib clean
-
 
 build-ps2Perf:
 	$(MAKE) -C ps2Perf
 
-build-example:
+sample: build-ps2Perf
 	$(MAKE) -C example
-

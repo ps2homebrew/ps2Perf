@@ -10,7 +10,7 @@
 */
 
 
-
+#include <loadfile.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <tamtypes.h>
@@ -122,7 +122,7 @@ int main()
 		startPs2Perf 	();   	// Start counters!!! 
 		output = VeryVeryHardFunction (10000);
 		stopPs2Perf 	();		// Stop counters!!!
-		printf ("Output Equals %d\n",output);
+		printf ("Output Equals %ld\n",output);
 		
 		// Here counters aren't counting 
 		
@@ -141,7 +141,7 @@ int main()
 		startPs2Perf 	();   	
 		output = VeryVeryHardFunctionScratch (10000);
 		stopPs2Perf 	();		
-		printf ("Output Equals %d\n",output);
+		printf ("Output Equals %ld\n",output);
 		
 		// Here counters aren't counting 
 		
@@ -161,7 +161,7 @@ int main()
 		startPs2Perf 	();   	
 		output = VeryVeryHardFunctionNoCached (10000);
 		stopPs2Perf 	();		
-		printf ("Output Equals %d\n",output);
+		printf ("Output Equals %ld\n",output);
 		
 		// Here counters aren't counting 
 		
@@ -181,7 +181,7 @@ int main()
 		startPs2Perf 	();   	
 		output = VeryVeryHardFunctionUnCachedAccelerated (10000);
 		stopPs2Perf 	();		
-		printf ("Output Equals %d\n",output);
+		printf ("Output Equals %ld\n",output);
 		
 		// Here counters aren't counting 
 		
@@ -191,5 +191,6 @@ int main()
 		printf (DumpInfo (&myCounter0,&myCounter1)); 
 
   	// Zzzzzz...
-  	SleepThread(); 
+  	SleepThread();
+  	return EXIT_SUCCESS;
 }
