@@ -129,7 +129,7 @@ int main()
 	flushCounter(&myCounter1, PC1, 0);  // ...
 	printf("Very Very Hard Test 1\n");
 	printf(DumpInfo(&myCounter0, &myCounter1));  // A simple dumping function...
-	                                             /* ===========================================================================================================*/
+	/* ===========================================================================================================*/
 	/* Test Another VeryVeryHard Function now using scratchpad */
 
 	initCounter(&myCounter0, PC0);

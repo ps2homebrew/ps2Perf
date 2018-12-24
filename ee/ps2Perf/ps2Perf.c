@@ -39,33 +39,33 @@
 #include <malloc.h>
 #include <fileio.h>
 #define SENDTOPCCR(x) __asm __volatile(" mtps %0,0 \n\t SYNC.P" \
-                                       :                        \
-                                       : "r"(x)                 \
-                                       : "memory");
+									   :                        \
+									   : "r"(x)                 \
+									   : "memory");
 #define GETFROMPCCR(x) __asm __volatile(" mfps %0,0 " \
-                                        : "=r"(x)     \
-                                        : "r"(x)      \
-                                        : "memory");
+										: "=r"(x)     \
+										: "r"(x)      \
+										: "memory");
 #define CLEARPCCR __asm __volatile(" mtps $0,0 \n\t SYNC.P" \
-                                   :                        \
-                                   :                        \
-                                   : "memory");
+								   :                        \
+								   :                        \
+								   : "memory");
 #define CLEARPC0 __asm __volatile(" mtpc $0,0 \n\t SYNC.P" \
-                                  :                        \
-                                  :                        \
-                                  : "memory");
+								  :                        \
+								  :                        \
+								  : "memory");
 #define GETPC0(x) __asm __volatile(" mfpc %0,0 \n\t SYNC.P" \
-                                   : "=r"(x)                \
-                                   : "r"(x)                 \
-                                   : "memory");
+								   : "=r"(x)                \
+								   : "r"(x)                 \
+								   : "memory");
 #define CLEARPC1 __asm __volatile(" mtpc $0,1 \n\t SYNC.P" \
-                                  :                        \
-                                  :                        \
-                                  : "memory");
+								  :                        \
+								  :                        \
+								  : "memory");
 #define GETPC1(x) __asm __volatile(" mfpc %0,1 \n\t SYNC.P" \
-                                   : "=r"(x)                \
-                                   : "r"(x)                 \
-                                   : "memory");
+								   : "=r"(x)                \
+								   : "r"(x)                 \
+								   : "memory");
 
 void initPs2Perf()
 {
@@ -297,37 +297,37 @@ char *DumpInfo(Counters0 *c0, Counters1 *c1)
 	char *output;
 	output = (char *)malloc(sizeof(char) * 1024);
 	sprintf(output, "\n[PC0] C1: %ld C2: %ld C3: %ld C4: %ld C5: %ld C6: %ld C7: %ld\nC8: %ld C9: %ld C10: %ld C11: %ld C12: %ld C13: %ld C14: %ld C15: %ld \n[PC1] C0: %ld C1: %ld C2: %ld C3: %ld C4: %ld C5: %ld C6: %ld C7: %ld \nC8: %ld C9: %ld C10: %ld C11: %ld C12: %ld C13: %ld C14: %ld C15: %ld\n",
-	        c0->ProcessorCycle,
-	        c0->SingleInstructionIssue,
-	        c0->BranchIssued,
-	        c0->BTACmiss,
-	        c0->ITLBmiss,
-	        c0->InstructionCacheMiss,
-	        c0->AccessToDTLB,
-	        c0->nonBlockingLoad,
-	        c0->WBBSingleRequest,
-	        c0->WBBBurstRequest,
-	        c0->CPUAdressBusBusy,
-	        c0->InstructionCompleted,
-	        c0->NonBDSInstrucionCompleted,
-	        c0->COP2InstructionCompleted,
-	        c0->LoadCompleted,
-	        c1->LowOrderBranchIssued,
-	        c1->ProcessorCycle,
-	        c1->DualInstructionIssue,
-	        c1->BranchMispredicted,
-	        c1->TLBmiss,
-	        c1->DTLBmiss,
-	        c1->DataCacheMiss,
-	        c1->WBBSingleRequestUnavailable,
-	        c1->WBBBurstRequestUnavailable,
-	        c1->WBBBurstRequestAlmostFull,
-	        c1->WBBBurstRequestFull,
-	        c1->CPUDataBusBusy,
-	        c1->InstructionCompleted,
-	        c1->NonBDSInstrucionCompleted,
-	        c1->COP1InstructionCompleted,
-	        c1->StoreCompleted);
+			c0->ProcessorCycle,
+			c0->SingleInstructionIssue,
+			c0->BranchIssued,
+			c0->BTACmiss,
+			c0->ITLBmiss,
+			c0->InstructionCacheMiss,
+			c0->AccessToDTLB,
+			c0->nonBlockingLoad,
+			c0->WBBSingleRequest,
+			c0->WBBBurstRequest,
+			c0->CPUAdressBusBusy,
+			c0->InstructionCompleted,
+			c0->NonBDSInstrucionCompleted,
+			c0->COP2InstructionCompleted,
+			c0->LoadCompleted,
+			c1->LowOrderBranchIssued,
+			c1->ProcessorCycle,
+			c1->DualInstructionIssue,
+			c1->BranchMispredicted,
+			c1->TLBmiss,
+			c1->DTLBmiss,
+			c1->DataCacheMiss,
+			c1->WBBSingleRequestUnavailable,
+			c1->WBBBurstRequestUnavailable,
+			c1->WBBBurstRequestAlmostFull,
+			c1->WBBBurstRequestFull,
+			c1->CPUDataBusBusy,
+			c1->InstructionCompleted,
+			c1->NonBDSInstrucionCompleted,
+			c1->COP1InstructionCompleted,
+			c1->StoreCompleted);
 
 	return (output);
 }
