@@ -24,10 +24,10 @@ $(EE_OBJS_DIR)%.o : %.c
 	$(EE_C_COMPILE) -c $< -o $@
 
 install: all
-	mkdir -p $(PS2DEV)/ps2Perf/lib
-	cp -f $(EE_LIB) $(PS2DEV)/ps2Perf/lib
-	mkdir -p $(PS2DEV)/ps2Perf/include
-	cp -f $(EE_INC)ps2Perf.h $(PS2DEV)/ps2Perf/include
+	mkdir -p $(DESTDIR)$(PS2DEV)/ps2Perf/lib
+	cp -f $(EE_LIB) $(DESTDIR)$(PS2DEV)/ps2Perf/lib
+	mkdir -p $(DESTDIR)$(PS2DEV)/ps2Perf/include
+	cp -f $(EE_INC)ps2Perf.h $(DESTDIR)$(PS2DEV)/ps2Perf/include
 
 clean:
 	rm -rf $(EE_OBJS_DIR) $(EE_LIB_DIR)
